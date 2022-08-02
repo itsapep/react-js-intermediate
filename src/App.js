@@ -2,6 +2,8 @@ import './App.css';
 import ActionType from './redux/reducer/global_action_type';
 import { connect } from 'react-redux';
 import { Component } from 'react';
+import Number from './component/number';
+import NumberTwo from './component/number_two';
 
 class App extends Component {
   render() {
@@ -12,6 +14,8 @@ class App extends Component {
         <button onClick={this.props.handlePlus}>+</button>
         <button onClick={this.props.handleMinus}>-</button>
         <button onClick={this.props.handleTimes2}>x2</button>
+        <Number/>
+        <NumberTwo/>
       </div>
     );
   }
