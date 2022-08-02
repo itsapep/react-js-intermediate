@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import ActionType from './redux/reducer/global_action_type';
+import { connect } from 'react-redux';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    console.log(this.props);
+    return (
+      <div>
+        <h1>{this.props.numb}</h1>
+        <button onClick={this.props.handlePlus}>+</button>
+        <button onClick={this.props.handleMinus}>-</button>
+        <button onClick={this.props.handleTimes2}>x2</button>
+      </div>
+    );
+  }
 }
 
-export default App;
+// this is how we send status
+const mapStateToProps = (state) => {
+  return {
+    numb: state.globalNumber
+  }
+}
+
+// this is how we send action
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handlePlus: () => dispatch({type: ActionType.PLUS}),
+    handleMinus: () => dispatch({type: ActionType.MINUS}),
+    handleTimes2: () => dispatch({type: ActionType.TIMES2})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (App);
