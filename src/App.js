@@ -1,64 +1,94 @@
 import { Component } from 'react';
 import './App.css';
-import data from './products.json'
-// import ClickCounter from './component/click_counter';
-// import HoverCounter from './component/hover_counter';
-import HelloComponent from './component/HelloComponent';
-import ProductCard from './features/product/ProductCard';
-import ProductList from './features/product/ProductList';
+import StoreData from './features/product/StoreData';
+import WrappedComponent from './features/product/TryStoreData';
+// import { lensPath, get, set } from "ramda";
 
-const filterProducts = (searchTerm) => {
-  searchTerm = searchTerm.toUpperCase()
-  return data.products.filter(product => {
-    let str = `${product.productId} ${product.productName}`.toUpperCase();
-    return str.indexOf(searchTerm) >= 0;
-  })
-}
+// class Toggle extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.ls = localStorage;
+//     this.state = {
+//       buttons: [],
+//       userName: '',
+//       favouriteFood: ''
+//     };
+//   }
 
-const WithSearch = WrappedComponent => {
-  class WithSearch extends Component{
-    state = {
-      searchTerm: ""
-    };
-    handleSearch = event => {
-      this.setState({ searchTerm: event.target.value });
-    };
+//   componentWillMount() {
+//     const lsState = this.ls.getItem("state");
+//     if (!lsState) {
+//       this.fill();
+//     } else {
+//       this.setState(() => JSON.parse(lsState));
+//     }
+//   }
 
-    render() {
-      let { searchTerm } = this.state;
-      let filteredProducts = filterProducts(searchTerm);
-      return (
-          <>
-            <input
-              onChange={this.handleSearch}
-              value={searchTerm}
-              type="text"
-              placeholder="Search"
-            />
-            <WrappedComponent data={filteredProducts} />
-          </>
-      );
-    }
-  };
-  WithSearch.displayName = `WithSearch(${getDisplayName(WrappedComponent)})`;
-  return WithSearch;
-};
+//   componentDidUpdate() {
+//     this.ls.setItem("state", JSON.stringify(this.state));
+//   }
 
-const getDisplayName = (WrappedComponent) => {
-  return WrappedComponent.displayName || WrappedComponent.productName || 'Component';
-}
+//   fill = () => {
+//     this.setState(() => ({
+//       buttons: Array(this.props.count)
+//         .fill({
+//           isToggleOn: false
+//         })
+//         .map((item, id) => ({
+//           ...item,
+//           id
+//         }))
+//     }));
+//   };
 
-const ProductsListWithSearch = WithSearch(ProductList);
+//   clear = () => {
+//     this.ls.removeItem("state");
+//     this.fill();
+//   };
+
+//   handleClick = idx => {
+//     const path = lensPath(["buttons", idx, "isToggleOn"]);
+//     const nextState = set(
+//       path,
+//       !this.state.buttons[idx].isToggleOn,
+//       this.state
+//     );
+//     this.setState(() => nextState);
+//     // this.setState(state => ({
+//     //   buttons: state.buttons.map(button =>
+//     //     button.id !== idx
+//     //       ? button
+//     //       : { ...button, isToggleOn: !button.isToggleOn }
+//     //   )
+//     // }));
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <button onClick={this.clear}>Clear localStorage</button>
+//         <hr />
+//         {this.state.buttons.map(button => (
+//           <button
+//             key={button.id}
+//             onClick={this.handleClick.bind(null, button.id)}
+//           >
+//             {button.isToggleOn ? "ON" : "OFF"}
+//           </button>
+//         ))}
+//       </div>
+//     );
+//   }
+// }
+
+// ReactDOM.render(<Toggle count={100} />, document.getElementById("root"));
+
 
 function App() {
   return (
     <div>
-      {/* <ClickCounter/> */}
-      {/* <HoverCounter/> */}
-      {/* <ProductCard data={data.products}/> */}
-      {/* <ProductList data={data.products}/> */}
-      <ProductsListWithSearch/>
-
+      <StoreData/>
+      {/* <WrappedComponent></WrappedComponent> */}
     </div>
   );
 }
