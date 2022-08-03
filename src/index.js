@@ -6,14 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './redux/global_reducer';
+import { store } from './app/store';
+import Calculator from './component/calculator/calculator';
 
-const store = createStore(rootReducer)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <App /> */}
+      <Calculator/>
     </Provider>
   </React.StrictMode>
 );
