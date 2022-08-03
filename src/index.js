@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from './app/store';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './redux/global_reducer';
-import { store } from './app/store';
-import Calculator from './component/calculator/calculator';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = configureStore();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <App /> */}
-      <Calculator/>
+      <App />
     </Provider>
   </React.StrictMode>
 );

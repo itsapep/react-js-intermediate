@@ -1,9 +1,6 @@
-import CalculatorReducer from "../component/calculator/state/CalculatorReducer";
+import { createStore } from "redux";
+import { rootReducer } from "./rootReducer";
 
-const { createStore } = require("redux");
-
-const store = createStore(
-    CalculatorReducer,
-)
-
-export {store};
+export function configureStore(){
+    return createStore(rootReducer())
+}
