@@ -11,5 +11,14 @@ export const LABEL = {
     },
     'Book.label': {
         value: 'Book'
-    }
+    },
+    'Student.label': {
+        value: 'Student Name :'
+    },
+    'Student.submit': {
+        value: 'Change Name'
+    },
+    'StudentAge.submit': {
+        value: 'Add Age'
+    },
 }

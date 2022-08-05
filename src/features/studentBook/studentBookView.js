@@ -14,7 +14,6 @@ const StudentBookView = (props) => {
                 <AppFormInput id='book' label={LABEL['Book.label'].value} value={newBookValue} onValueChange={handleNewBookChange}></AppFormInput>
                 <AppButton handleClick={handleSubmit} label={LABEL['StudentBook.submit'].value}></AppButton>
                 <ul>
-                    {/* {books.map((books) => <li key={books}>{books}</li>)} */}
                     {books.map(book => <li key={book}>{book}</li>)}
                 </ul>
             </div>

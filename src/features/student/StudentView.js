@@ -1,55 +1,24 @@
-import { Component } from 'react';
-import { addAgeAction, changeNameAction } from './state/StudentAction';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { LABEL } from "../../app/constant"
+import AppButton from "../../component/appButton"
+import AppFormInput from "../../component/appFormInput"
 
-class StudentView extends Component{
-    constructor(props){
-        super(props);
-        this.state = {nameValue : ''};
-    }
+const StudentView = (props) => {
+    const {handleSubmitStudent, newStudentValue, handleNewStudentChange, student, handleAddAgeClick, books} = props
+    return (
+        <div>
+            <AppFormInput id='student' label={LABEL['Student.label'].value} value={newStudentValue} onValueChange={handleNewStudentChange}></AppFormInput>
 
-    handleNameChange = (event) => this.setState({
-        nameValue : event.target.value
-    }) 
+            <AppButton handleClick={handleSubmitStudent} label={LABEL['Student.submit'].value}></AppButton>
 
-    handleSubmit = () => this.props.changeNameAction(this.state.nameValue)
-    handleAddAgeClick = () => this.props.addAgeAction();
-
-    render(){
-        const {student} = this.props;
-        console.log(student);
-        return(
             <div>
-                <label>Name :
-                    <input type='text' value={this.state.nameValue} onChange={this.handleNameChange}/>
-                </label>
-                <button onClick={this.handleSubmit}>Change Name</button>
-                <div>
-                    <button onClick={this.handleAddAgeClick}>Add Age</button>
-                </div>
-                <div>{student.name} {student.age}</div>
+                <AppButton handleClick={handleAddAgeClick} label={LABEL['StudentAge.submit'].value}></AppButton>
             </div>
-        )
-    }
+            <div>{student.name} {student.age}</div>
+            <ul>
+                {books.map(book => <li key={book}>{book}</li>)}
+            </ul>
+        </div>
+    )
 }
 
-const mapDispatchToProps = {
-    addAgeAction,
-    changeNameAction
-}
-
-const mapStateToProps = state => {
-    return {student : state.studentReducer}
-}
-
-StudentView.propsTypes ={
-    student : PropTypes.shape({
-        name : PropTypes.string,
-        age : PropTypes.number,
-    }).isRequired,
-    addAgeAction : PropTypes.func,
-    changeNameAction : PropTypes.func,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps) (StudentView);
+export default StudentView;
