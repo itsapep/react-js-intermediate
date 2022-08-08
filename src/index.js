@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { setupStore } from "./store";
+import { Provider } from 'react-redux';
+import { DepsProvider } from './context/depContext';
+import moreEffectService from './services/moreEffectService';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = setupStore();
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <DepsProvider services={{
+            moreEffectService: moreEffectService()
+        }}>
+            <App/>
+        </DepsProvider>
+    </Provider>
   </React.StrictMode>
 );
 
