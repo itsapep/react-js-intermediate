@@ -1,7 +1,6 @@
 button {
     font-size: 20px;
-    width: 25%;
-    height: 75%;
+    width: 33.3%;
     border: 1px solid #d6d6d6;
   }
   
@@ -39,7 +38,7 @@ button {
     flex-flow: wrap;
     flex-wrap: wrap;
     justify-items: stretch;
-    width: 100%;
+    width: 75%;
 }
 
 .numbers button:last-child {
@@ -49,6 +48,7 @@ button {
 .operators {
     display: flex;
     flex-flow: column;
+    width: 25%;
 }
 
 .operators button {
@@ -56,6 +56,5 @@ button {
     background: #7f39ff;
     border-left: none;
     border-bottom: 0;
-    width: 25%;
-    height: 75%;
+    width: 100%;
 }

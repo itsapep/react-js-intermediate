@@ -28,7 +28,7 @@ const CalculatorHook = props => {
 
                 <section className="operators">
                     <button onClick={() => handleClick("÷")}>÷</button>
-                    <button onClick={() => handleClick("x")}>x</button>
+                    <button onClick={() => handleClick("x")}>×</button>
                     <button onClick={() => handleClick("-")}>-</button>
                     <button onClick={() => handleClick("+")}>+</button>
                     <button onClick={() => handleResult()}>=</button>
