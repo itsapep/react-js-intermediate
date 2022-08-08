@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
+import DummyView from './components/DummyView';
 import MoreEffect from './components/MoreEffect';
+import ThemeModifier from './components/ThemeModifier';
 
 function App() {
   // //  allow a functional component to use a component-level state
@@ -15,8 +17,13 @@ function App() {
   //   </div>
   // );
 
-  return(
-    <MoreEffect></MoreEffect>
+  // return(
+  //   <MoreEffect></MoreEffect>
+  // )
+
+  const [pageId, setPageId] = useState(0);
+  return (
+    pageId === 0 ? <ThemeModifier onNavigate={() => setPageId(1)}></ThemeModifier> : <DummyView onNavigate={() => setPageId(0)}></DummyView>
   )
 }
 
