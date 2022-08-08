@@ -3,6 +3,7 @@ import './App.css';
 import DummyView from './components/DummyView';
 import { HookComponent } from './components/hookComponent';
 import MoreEffect from './components/MoreEffect';
+import MyHook from './components/myHook/myHook';
 import ThemeModifier from './components/ThemeModifier';
 import { DepsProvider } from './context/depContext';
 import moreEffectService from './services/moreEffectService';
@@ -20,13 +21,13 @@ function App() {
   //   </div>
   // );
 
-  return(
-    <DepsProvider services={{
-      moreEffectService : moreEffectService()
-    }}>
-      <MoreEffect></MoreEffect>
-    </DepsProvider>
-  )
+  // return(
+  //   <DepsProvider services={{
+  //     moreEffectService : moreEffectService()
+  //   }}>
+  //     <MoreEffect></MoreEffect>
+  //   </DepsProvider>
+  // )
 
   // const [pageId, setPageId] = useState(0);
   // return (
@@ -37,6 +38,10 @@ function App() {
   //Fitur ini memungkinkan penggunaan state tanpa membuat class javascript
   //Gunakan hook di paling atas, sebelum react function yang lainnya (sebelum return)
   // return <HookComponent></HookComponent>
+
+  return (
+    <MyHook></MyHook>
+  )
 }
 
 export default App;
