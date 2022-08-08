@@ -4,6 +4,8 @@ import DummyView from './components/DummyView';
 import { HookComponent } from './components/hookComponent';
 import MoreEffect from './components/MoreEffect';
 import ThemeModifier from './components/ThemeModifier';
+import { DepsProvider } from './context/depContext';
+import moreEffectService from './services/moreEffectService';
 
 function App() {
   // //  allow a functional component to use a component-level state
@@ -18,9 +20,13 @@ function App() {
   //   </div>
   // );
 
-  // return(
-  //   <MoreEffect></MoreEffect>
-  // )
+  return(
+    <DepsProvider services={{
+      moreEffectService : moreEffectService()
+    }}>
+      <MoreEffect></MoreEffect>
+    </DepsProvider>
+  )
 
   // const [pageId, setPageId] = useState(0);
   // return (
@@ -30,7 +36,7 @@ function App() {
   //Hooks adalah fitur yang baru ada di React 16.8.
   //Fitur ini memungkinkan penggunaan state tanpa membuat class javascript
   //Gunakan hook di paling atas, sebelum react function yang lainnya (sebelum return)
-  return <HookComponent></HookComponent>
+  // return <HookComponent></HookComponent>
 }
 
 export default App;
