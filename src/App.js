@@ -1,5 +1,6 @@
 import './App.css';
-import ProductForm from './productForm';
+import ProductForm from './component/productForm';
+import { DepsContextProvider } from './context/depsContextProvider';
 
 // refactor challenge!
 // 1. aggregate feature or function by directory
@@ -9,7 +10,9 @@ import ProductForm from './productForm';
 function App() {
   return (
     <div className="App">
-      <ProductForm></ProductForm>
+      <DepsContextProvider>
+        <ProductForm/>
+      </DepsContextProvider>
     </div>
   );
 }
