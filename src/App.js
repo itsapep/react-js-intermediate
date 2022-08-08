@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import ProductForm from './productForm';
 
+// refactor challenge!
+// 1. aggregate feature or function by directory
+// 2. create shared or atomic component
+// 3. use context as dependency container
+// 4. refactor all part into function-based component, use hook, and separate the UI logic
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProductForm></ProductForm>
     </div>
   );
 }
