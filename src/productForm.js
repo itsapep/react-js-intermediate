@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { ProductService } from "./productService";
+import { ButtonForm } from "./shared/buttonForm";
+import { InputForm } from "./shared/inputForm";
 
 class ProductForm extends Component {
     constructor(props) {
@@ -56,11 +58,9 @@ class ProductForm extends Component {
     render() {
         return(
             <div>
-                <label>ID</label>
-                <input name="id" type='text' value={this.state.data.id} onChange={this.handleOnInput}></input>
-                <label>Product Name</label>
-                <input name="productName" type='text' value={this.state.data.productName} onChange={this.handleOnInput}></input>
-                <button disabled={this.state.isLoading} onClick={this.handleSaveProduct}>Save</button>
+                <InputForm name='id' label='ID' value={this.state.data.id} handleOnInput={this.handleOnInput}/>
+                <InputForm name="productName" label='Product Name' value={this.state.data.productName} handleOnInput={this.handleOnInput}/>
+                <ButtonForm label='Save' isLoading={this.state.isLoading} handleSaveProduct={this.handleSaveProduct}/>
                 {this.state.error && <div>ooopz</div>}
             </div>
         )
